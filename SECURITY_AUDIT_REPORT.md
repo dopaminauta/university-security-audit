@@ -5,7 +5,6 @@
 **Report ID:** EXT-AUDIT-CS-002  
 **Assessment Type:** External Passive Security Audit (OSINT + Non-Intrusive Reconnaissance)  
 **Auditor:** Independent Security Researcher  
-**Reviewed by:** AI-assisted Quality Assurance (Gevurah Gate)  
 **Classification:** Public Portfolio — Case Study (fictionalized for confidentiality)
 
 > ⚠️ **Disclaimer:** This report is a fictionalized case study based on an unsolicited good-faith external security assessment. All domain names, IP addresses, institutional names, campus locations, server hostnames, and technical identifiers have been replaced with synthetic placeholders to protect the confidentiality of the assessed organization. This document follows Coordinated Vulnerability Disclosure (CVD) principles as described in *Gray Hat Hacking, 6th Edition*. No real infrastructure details, exploit paths, or sensitive data are disclosed.
@@ -16,7 +15,7 @@
 
 An external security assessment was conducted on the web infrastructure of a national university network using passive OSINT techniques and non-intrusive reconnaissance. **No exploits were executed. No systems were accessed. No data was modified.**
 
-The assessment identified **2 critical findings** (end-of-life servers with public RCE exploits), **2 high-severity findings** (outdated but still-supported server versions), and **4 medium-severity hardening items** across multiple regional campuses.
+The assessment identified **1 critical finding** (end-of-life server with public RCE exploit — CVE-2017-7269, CVSS 9.8), **1 high-severity finding** (end-of-life Apache 2.2.22 with memory disclosure — CVE-2017-9798, CVSS 7.5), **2 medium-severity findings** (outdated but still-supported server versions), and **4 lower-severity hardening items** across multiple regional campuses.
 
 ⚠️ **Important methodological note:** Server version strings were detected via HTTP banners and TLS handshakes. On Debian/Ubuntu-based systems, it is common practice to backport security patches without updating the banner version string. Therefore, a server reporting `Apache/2.2.22 (Ubuntu)` *may* have security patches applied. The findings below reflect banner-detected versions; active authorized verification is required to confirm actual patch levels.
 
@@ -62,7 +61,7 @@ The assessment identified **2 critical findings** (end-of-life servers with publ
 
 The North Campus web server runs **IIS/6.0 on Windows Server 2003 R2**, an operating system whose extended support ended in 2015 — over a decade without security patches. This version is vulnerable to:
 
-- **CVE-2017-7269**: Unauthenticated Remote Code Execution via WebDAV PROPATCH. Public exploit code is available (Metasploit module, Python PoC). Allows full server compromise without credentials.
+- **CVE-2017-7269**: Unauthenticated Remote Code Execution via WebDAV PROPATCH. Public proof-of-concept exploit code is available. Allows full server compromise without credentials.
 - Multiple additional post-EOL CVEs affecting the underlying OS.
 
 ⚠️ **SSL certificate expires in approximately 5 days from assessment date**, adding urgency to the remediation window.
@@ -74,9 +73,6 @@ The North Campus web server runs **IIS/6.0 on Windows Server 2003 R2**, an opera
 # Banner fingerprinting confirms IIS/6.0
 curl -sI "https://www.north.national-university.example/" | grep -i "server:"
 # Expected: Server: Microsoft-IIS/6.0
-
-# CVE-2017-7269 exploitation (NOT EXECUTED — provided for reference only)
-# msf6 > use exploit/windows/iis/iis_webdav_scstoragepathfromurl
 ```
 
 **Remediation:**
@@ -245,7 +241,7 @@ These campuses demonstrate good security practices worth replicating across the 
 |-----|-----------|------|--------|
 | CVE-2017-7269 | IIS 6.0 WebDAV RCE | 9.8 | Confirmed version match — public exploit exists |
 | CVE-2017-9798 | Apache 2.2.x Optionsbleed | 7.5 | Confirmed version match |
-| CVE-2017-7679 | Apache 2.2.x XSS | 5.0 | Confirmed version match |
+| CVE-2017-7679 | Apache 2.2.x Buffer Overread (mod_mime) | 7.5 | Confirmed version match |
 
 > **Note:** CVE applicability was assessed via version fingerprinting only. **No exploits were attempted or executed.** The IIS 6.0 finding includes a CVE with publicly available exploit code (CVE-2017-7269), but no exploitation was performed.
 

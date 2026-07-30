@@ -25,7 +25,7 @@ This case study demonstrates a multi-campus external security assessment: discov
 | Severity | Count | Category |
 |----------|:-----:|----------|
 | 🔴 CRITICAL (CVSS 9.8) | 1 | IIS 6.0 on Windows Server 2003 R2 — EOL 2015, public RCE exploit (CVE-2017-7269) |
-| 🟠 HIGH (CVSS 7.5) | 1 | Apache 2.2.22 — branch EOL 2018, memory disclosure (CVE-2017-9798) |
+| 🟠 HIGH (CVSS 7.5) | 1 | Apache 2.2.22 — branch EOL 2018, memory disclosure via mod_mime (CVE-2017-9798, CVE-2017-7679) |
 | 🟡 MEDIUM (CVSS 5.0) | 2 | Apache 2.4.29 and nginx 1.14.2 — significantly outdated within supported branches |
 | 🟢 LOW / INFO | 4 | WordPress admin exposure, DMARC monitor-only, expiring SSL certificates, WAF detection |
 
@@ -66,7 +66,7 @@ university-security-audit/
 | **Fingerprinting** | curl (HTTP headers), openssl s_client (TLS) |
 | **Email Security** | dig (SPF/DMARC/DKIM) |
 | **CVE Analysis** | NIST NVD, MITRE CVE database |
-| **Quality Review** | AI-assisted ethical & technical validation (Gevurah Gate) |
+| **Quality Review** | Independent multi-stage validation |
 
 **Standards:** OWASP Testing Guide v4 · NIST SP 800-115
 
