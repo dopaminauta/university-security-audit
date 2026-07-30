@@ -241,7 +241,7 @@ These campuses demonstrate good security practices worth replicating across the 
 |-----|-----------|------|--------|
 | CVE-2017-7269 | IIS 6.0 WebDAV RCE | 9.8 | Confirmed version match — public exploit exists |
 | CVE-2017-9798 | Apache 2.2.x Optionsbleed | 7.5 | Confirmed version match |
-| CVE-2017-7679 | Apache 2.2.x Buffer Overread (mod_mime) | 9.8 | Confirmed version match |
+| CVE-2017-7679 | Apache 2.2.x Buffer Overread (mod_mime) | 7.5 | Confirmed version match |
 
 > **Note:** CVE applicability was assessed via version fingerprinting only. **No exploits were attempted or executed.** The IIS 6.0 finding includes a CVE with publicly available exploit code (CVE-2017-7269), but no exploitation was performed.
 
