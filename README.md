@@ -107,5 +107,5 @@ university-security-audit/
 
 ---
 
-*Axel Feduzka — Offensive Security
-Honesty in every finding. Curiosity in every dig. Dedication in every delivery.*
+*Axel Feduzka — Offensive Security*
+*Honesty in every finding. Curiosity in every dig. Dedication in every delivery.*
