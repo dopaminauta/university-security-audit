@@ -7,7 +7,7 @@
 **Auditor:** Independent Security Researcher  
 **Classification:** Public Portfolio — Case Study (fictionalized for confidentiality)
 
-> ⚠️ **Disclaimer:** This report is a fictionalized case study based on an unsolicited good-faith external security assessment. All domain names, IP addresses, institutional names, campus locations, server hostnames, and technical identifiers have been replaced with synthetic placeholders to protect the confidentiality of the assessed organization. This document follows Coordinated Vulnerability Disclosure (CVD) principles as described in *Gray Hat Hacking, 6th Edition*. No real infrastructure details, exploit paths, or sensitive data are disclosed.
+>  **Disclaimer:** This report is a fictionalized case study based on an unsolicited good-faith external security assessment. All domain names, IP addresses, institutional names, campus locations, server hostnames, and technical identifiers have been replaced with synthetic placeholders to protect the confidentiality of the assessed organization. This document follows Coordinated Vulnerability Disclosure (CVD) principles as described in *Gray Hat Hacking, 6th Edition*. No real infrastructure details, exploit paths, or sensitive data are disclosed.
 
 ---
 
@@ -17,7 +17,7 @@ An external security assessment was conducted on the web infrastructure of a nat
 
 The assessment identified **1 critical finding** (end-of-life server with public RCE exploit — CVE-2017-7269, CVSS 9.8), **1 high-severity finding** (end-of-life Apache 2.2.22 with memory disclosure — CVE-2017-9798, CVSS 7.5), **2 medium-severity findings** (outdated but still-supported server versions), and **4 lower-severity hardening items** across multiple regional campuses.
 
-⚠️ **Important methodological note:** Server version strings were detected via HTTP banners and TLS handshakes. On Debian/Ubuntu-based systems, it is common practice to backport security patches without updating the banner version string. Therefore, a server reporting `Apache/2.2.22 (Ubuntu)` *may* have security patches applied. The findings below reflect banner-detected versions; active authorized verification is required to confirm actual patch levels.
+ **Important methodological note:** Server version strings were detected via HTTP banners and TLS handshakes. On Debian/Ubuntu-based systems, it is common practice to backport security patches without updating the banner version string. Therefore, a server reporting `Apache/2.2.22 (Ubuntu)` *may* have security patches applied. The findings below reflect banner-detected versions; active authorized verification is required to confirm actual patch levels.
 
 ---
 
@@ -64,7 +64,7 @@ The North Campus web server runs **IIS/6.0 on Windows Server 2003 R2**, an opera
 - **CVE-2017-7269**: Unauthenticated Remote Code Execution via WebDAV PROPATCH. Public proof-of-concept exploit code is available. Allows full server compromise without credentials.
 - Multiple additional post-EOL CVEs affecting the underlying OS.
 
-⚠️ **SSL certificate expires in approximately 5 days from assessment date**, adding urgency to the remediation window.
+ **SSL certificate expires in approximately 5 days from assessment date**, adding urgency to the remediation window.
 
 **Impact:** An attacker can gain unauthenticated remote code execution on the server, potentially pivoting to internal university networks, exfiltrating research data, or deploying ransomware.
 
@@ -99,7 +99,7 @@ The East Campus web server runs **Apache/2.2.22 (Ubuntu)**, belonging to the Apa
 - **CVE-2017-9798** (Optionsbleed): Memory disclosure via malformed .htaccess `Limit` directives — CVSS 7.5
 - Multiple additional post-EOL CVEs affecting the 2.2.x branch
 
-**⚠️ Ubuntu backport caveat:** Ubuntu may have backported security patches to their Apache 2.2.22 package. The actual patch level cannot be confirmed from the banner string alone — active authorized verification is required.
+** Ubuntu backport caveat:** Ubuntu may have backported security patches to their Apache 2.2.22 package. The actual patch level cannot be confirmed from the banner string alone — active authorized verification is required.
 
 **Impact:** If unpatched, an attacker can read arbitrary memory from the server process, potentially leaking credentials, session tokens, or configuration secrets.
 
@@ -171,14 +171,14 @@ Multiple campus websites expose `/wp-admin/` login panels directly to the intern
 **Description:**
 
 Email authentication records:
-- **SPF:** ✅ Configured (`v=spf1 mx include:spf.protection.outlook.com ~all`)
-- **DMARC:** ⚠️ `p=none` — monitor-only mode, does not prevent domain spoofing
-- **DKIM:** ❌ No default selector found
+- **SPF:**  Configured (`v=spf1 mx include:spf.protection.outlook.com ~all`)
+- **DMARC:**  `p=none` — monitor-only mode, does not prevent domain spoofing
+- **DKIM:**  No default selector found
 
 With `p=none`, anyone can send emails appearing to come from `@national-university.example` without them being rejected or quarantined.
 
 **Remediation:**
-1. Progressively tighten DMARC: `p=none` → `p=quarantine` → `p=reject`
+1. Progressively tighten DMARC: `p=none` -> `p=quarantine` -> `p=reject`
 2. Implement DKIM signing for all outbound email
 3. Monitor DMARC aggregate reports (rua) during transition
 
@@ -188,7 +188,7 @@ With `p=none`, anyone can send emails appearing to come from `@national-universi
 
 | Campus | Expiration | Days Remaining |
 |--------|------------|:--------------:|
-| North Campus | Imminent | **⚠️ ~5 days** |
+| North Campus | Imminent | ** ~5 days** |
 | East Campus | 30 days | 30 |
 | West Campus | 30 days | 30 |
 | South Campus | 60 days | 60 |
@@ -231,7 +231,7 @@ These campuses demonstrate good security practices worth replicating across the 
 
 **Methodology Compliance:** OWASP Testing Guide v4, NIST SP 800-115. **No active scanning, no exploits, no automated crawling.**
 
-**⚠️ Ubuntu/Debian Backport Limitation:** Servers running Apache/nginx packaged by Debian/Ubuntu may have security patches backported without changing the banner version string. Reported versions reflect HTTP banners, not necessarily the actual patch level. Active authorized verification is required to confirm.
+** Ubuntu/Debian Backport Limitation:** Servers running Apache/nginx packaged by Debian/Ubuntu may have security patches backported without changing the banner version string. Reported versions reflect HTTP banners, not necessarily the actual patch level. Active authorized verification is required to confirm.
 
 ---
 
@@ -275,8 +275,8 @@ This assessment followed **Coordinated Vulnerability Disclosure (CVD)** best pra
 ## 9. Prioritized Remediation Roadmap
 
 ### IMMEDIATE (0–7 days)
-1. 🔴 **North Campus:** Renew expiring SSL certificate (5 days)
-2. 🔴 **North Campus:** Begin migration off IIS 6.0 / Windows Server 2003 R2
+1.  **North Campus:** Renew expiring SSL certificate (5 days)
+2.  **North Campus:** Begin migration off IIS 6.0 / Windows Server 2003 R2
 
 ### SHORT-TERM (1–4 weeks)
 3. 🟠 **East Campus:** Verify Apache 2.2.22 patch level; upgrade to 2.4.x
@@ -285,8 +285,8 @@ This assessment followed **Coordinated Vulnerability Disclosure (CVD)** best pra
 6. 🔒 **All campuses:** Restrict `/wp-admin/` access by IP
 
 ### MEDIUM-TERM (1–3 months)
-7. 📧 Tighten DMARC policy: `p=none` → `p=quarantine` → `p=reject`
-8. 🔑 Implement DKIM signing
+7. 📧 Tighten DMARC policy: `p=none` -> `p=quarantine` -> `p=reject`
+8.  Implement DKIM signing
 9. 🔒 Automate SSL certificate renewal (certbot / ACME)
 
 ### ONGOING

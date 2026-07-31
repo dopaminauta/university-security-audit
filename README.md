@@ -8,11 +8,11 @@
 
 **Security assessment case study** — demonstrating multi-campus infrastructure audit, legacy system vulnerability research, and responsible disclosure practices.
 
-> ⚠️ **Important:** This repository contains a **fictionalized case study** based on an unsolicited good-faith external security assessment, prepared for professional portfolio purposes. All technical information, domain names, IP addresses, institutional names, campus locations, and server hostnames have been **replaced with synthetic or simulated data** to protect the confidentiality of the assessed organization, in accordance with Coordinated Vulnerability Disclosure (CVD) principles.
+>  **Important:** This repository contains a **fictionalized case study** based on an unsolicited good-faith external security assessment, prepared for professional portfolio purposes. All technical information, domain names, IP addresses, institutional names, campus locations, and server hostnames have been **replaced with synthetic or simulated data** to protect the confidentiality of the assessed organization, in accordance with Coordinated Vulnerability Disclosure (CVD) principles.
 
 ---
 
-## 📋 Overview
+##  Overview
 
 This case study demonstrates a multi-campus external security assessment: discovering and fingerprinting web servers across a distributed university network, identifying end-of-life systems with publicly available exploits, analyzing email security posture, and delivering a prioritized remediation roadmap.
 
@@ -20,14 +20,14 @@ This case study demonstrates a multi-campus external security assessment: discov
 
 ---
 
-## 🎯 Key Findings
+##  Key Findings
 
 | Severity | Count | Category |
 |----------|:-----:|----------|
-| 🔴 CRITICAL (CVSS 9.8) | 1 | IIS 6.0 on Windows Server 2003 R2 — EOL 2015, public RCE exploit (CVE-2017-7269) |
+|  CRITICAL (CVSS 9.8) | 1 | IIS 6.0 on Windows Server 2003 R2 — EOL 2015, public RCE exploit (CVE-2017-7269) |
 | 🟠 HIGH (CVSS 7.5) | 1 | Apache 2.2.22 — branch EOL 2018, memory disclosure via mod_mime (CVE-2017-9798, CVE-2017-7679) |
 | 🟡 MEDIUM (CVSS 5.0) | 2 | Apache 2.4.29 and nginx 1.14.2 — significantly outdated within supported branches |
-| 🟢 LOW / INFO | 4 | WordPress admin exposure, DMARC monitor-only, expiring SSL certificates, WAF detection |
+|  LOW / INFO | 4 | WordPress admin exposure, DMARC monitor-only, expiring SSL certificates, WAF detection |
 
 **Most Significant:** A campus web server running **IIS 6.0 on Windows Server 2003 R2** — an operating system without security patches since 2015 — with a publicly available unauthenticated RCE exploit (CVE-2017-7269, CVSS 9.8). SSL certificate expiring within 5 days.
 
@@ -47,13 +47,13 @@ This case study demonstrates a multi-campus external security assessment: discov
 
 ---
 
-## 📁 Repository Structure
+##  Repository Structure
 
 ```
 university-security-audit/
-├── README.md                      ← Portfolio overview & methodology
-├── SECURITY_AUDIT_REPORT.md       ← Full case study report (fictionalized)
-└── LICENSE                        ← MIT License
+├── README.md                      <- Portfolio overview & methodology
+├── SECURITY_AUDIT_REPORT.md       <- Full case study report (fictionalized)
+└── LICENSE                        <- MIT License
 ```
 
 ---
@@ -70,11 +70,11 @@ university-security-audit/
 
 **Standards:** OWASP Testing Guide v4 · NIST SP 800-115
 
-**⚠️ Ubuntu/Debian Backport Caveat:** Servers on Debian-based distributions may backport security patches without updating the banner version string. Reported versions reflect HTTP banners; actual patch levels require authorized active verification.
+** Ubuntu/Debian Backport Caveat:** Servers on Debian-based distributions may backport security patches without updating the banner version string. Reported versions reflect HTTP banners; actual patch levels require authorized active verification.
 
 ---
 
-## 🛡️ Ethics & Coordinated Disclosure
+##  Ethics & Coordinated Disclosure
 
 1. **100% Passive:** No active exploitation, no intrusion, no denial of service
 2. **OSINT-Only:** All intelligence from public sources and non-intrusive banner inspection
@@ -84,7 +84,7 @@ university-security-audit/
 
 ---
 
-## 📊 Assessment Metrics (Fictionalized)
+##  Assessment Metrics (Fictionalized)
 
 | Metric | Value |
 |--------|:-----:|
@@ -99,7 +99,7 @@ university-security-audit/
 
 ## 📄 Full Case Study
 
-→ **[SECURITY_AUDIT_REPORT.md](./SECURITY_AUDIT_REPORT.md)**
+-> **[SECURITY_AUDIT_REPORT.md](./SECURITY_AUDIT_REPORT.md)**
 
 ---
 
