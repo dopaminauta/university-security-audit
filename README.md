@@ -101,11 +101,10 @@ university-security-audit/
 
 -> **[SECURITY_AUDIT_REPORT.md](./SECURITY_AUDIT_REPORT.md)**
 
----
 
 ---
 
-Axel Feduzka — Offensive Security
-Honesty in every finding.
-Curiosity in every dig.
+Axel Feduzka — Offensive Security<br>
+Honesty in every finding.<br>
+Curiosity in every dig.<br>
 Dedication in every delivery.
