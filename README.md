@@ -104,3 +104,8 @@ university-security-audit/
 ---
 
 *Professional security portfolio. For inquiries, contact the repository maintainer. Unauthorized use of the techniques described against systems you do not own or have written permission to test is illegal.*
+
+---
+
+*Axel Feduzka — Offensive Security
+Honesty in every finding. Curiosity in every dig. Dedication in every delivery.*
