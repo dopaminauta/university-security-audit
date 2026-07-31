@@ -1,11 +1,11 @@
 # External Security Assessment Report
-## National University Network — Case Study
+## National University Network  Case Study
 
 **Date:** July 2026  
 **Report ID:** EXT-AUDIT-CS-002  
 **Assessment Type:** External Passive Security Audit (OSINT + Non-Intrusive Reconnaissance)  
 **Auditor:** Independent Security Researcher  
-**Classification:** Public Portfolio — Case Study (fictionalized for confidentiality)
+**Classification:** Public Portfolio  Case Study (fictionalized for confidentiality)
 
 >  **Disclaimer:** This report is a fictionalized case study based on an unsolicited good-faith external security assessment. All domain names, IP addresses, institutional names, campus locations, server hostnames, and technical identifiers have been replaced with synthetic placeholders to protect the confidentiality of the assessed organization. This document follows Coordinated Vulnerability Disclosure (CVD) principles as described in *Gray Hat Hacking, 6th Edition*. No real infrastructure details, exploit paths, or sensitive data are disclosed.
 
@@ -15,7 +15,7 @@
 
 An external security assessment was conducted on the web infrastructure of a national university network using passive OSINT techniques and non-intrusive reconnaissance. **No exploits were executed. No systems were accessed. No data was modified.**
 
-The assessment identified **1 critical finding** (end-of-life server with public RCE exploit — CVE-2017-7269, CVSS 9.8), **1 high-severity finding** (end-of-life Apache 2.2.22 with memory disclosure — CVE-2017-9798, CVSS 7.5), **2 medium-severity findings** (outdated but still-supported server versions), and **4 lower-severity hardening items** across multiple regional campuses.
+The assessment identified **1 critical finding** (end-of-life server with public RCE exploit  CVE-2017-7269, CVSS 9.8), **1 high-severity finding** (end-of-life Apache 2.2.22 with memory disclosure  CVE-2017-9798, CVSS 7.5), **2 medium-severity findings** (outdated but still-supported server versions), and **4 lower-severity hardening items** across multiple regional campuses.
 
  **Important methodological note:** Server version strings were detected via HTTP banners and TLS handshakes. On Debian/Ubuntu-based systems, it is common practice to backport security patches without updating the banner version string. Therefore, a server reporting `Apache/2.2.22 (Ubuntu)` *may* have security patches applied. The findings below reflect banner-detected versions; active authorized verification is required to confirm actual patch levels.
 
@@ -41,14 +41,14 @@ The assessment identified **1 critical finding** (end-of-life server with public
 | East Campus | `www.east.national-university.example` | Apache/2.2.22 (Ubuntu) |
 | West Campus | `www.west.national-university.example` | Apache/2.4.29 (Ubuntu) |
 | South Campus | `www.south.national-university.example` | nginx/1.14.2 |
-| Central-West Campus | `www.centralwest.national-university.example` | Drupal 10 — modern, actively supported |
+| Central-West Campus | `www.centralwest.national-university.example` | Drupal 10  modern, actively supported |
 | South-East Campus | `www.southeast.national-university.example` | HSTS preloaded, restrictive CSP |
 
 ---
 
 ## 3. Security Findings
 
-### FINDING C1 — End-of-Life IIS 6.0 on Windows Server 2003 R2 — Public RCE Exploit Available
+### FINDING C1  End-of-Life IIS 6.0 on Windows Server 2003 R2  Public RCE Exploit Available
 
 | Field | Detail |
 |-------|--------|
@@ -59,7 +59,7 @@ The assessment identified **1 critical finding** (end-of-life server with public
 
 **Description:**
 
-The North Campus web server runs **IIS/6.0 on Windows Server 2003 R2**, an operating system whose extended support ended in 2015 — over a decade without security patches. This version is vulnerable to:
+The North Campus web server runs **IIS/6.0 on Windows Server 2003 R2**, an operating system whose extended support ended in 2015  over a decade without security patches. This version is vulnerable to:
 
 - **CVE-2017-7269**: Unauthenticated Remote Code Execution via WebDAV PROPATCH. Public proof-of-concept exploit code is available. Allows full server compromise without credentials.
 - Multiple additional post-EOL CVEs affecting the underlying OS.
@@ -83,7 +83,7 @@ curl -sI "https://www.north.national-university.example/" | grep -i "server:"
 
 ---
 
-### FINDING C2 — End-of-Life Apache 2.2.22 (14 years old, branch EOL 2018)
+### FINDING C2  End-of-Life Apache 2.2.22 (14 years old, branch EOL 2018)
 
 | Field | Detail |
 |-------|--------|
@@ -96,10 +96,10 @@ curl -sI "https://www.north.national-university.example/" | grep -i "server:"
 
 The East Campus web server runs **Apache/2.2.22 (Ubuntu)**, belonging to the Apache 2.2.x branch whose end-of-life was January 2018. Known vulnerabilities include:
 
-- **CVE-2017-9798** (Optionsbleed): Memory disclosure via malformed .htaccess `Limit` directives — CVSS 7.5
+- **CVE-2017-9798** (Optionsbleed): Memory disclosure via malformed .htaccess `Limit` directives  CVSS 7.5
 - Multiple additional post-EOL CVEs affecting the 2.2.x branch
 
-** Ubuntu backport caveat:** Ubuntu may have backported security patches to their Apache 2.2.22 package. The actual patch level cannot be confirmed from the banner string alone — active authorized verification is required.
+** Ubuntu backport caveat:** Ubuntu may have backported security patches to their Apache 2.2.22 package. The actual patch level cannot be confirmed from the banner string alone  active authorized verification is required.
 
 **Impact:** If unpatched, an attacker can read arbitrary memory from the server process, potentially leaking credentials, session tokens, or configuration secrets.
 
@@ -110,7 +110,7 @@ The East Campus web server runs **Apache/2.2.22 (Ubuntu)**, belonging to the Apa
 
 ---
 
-### FINDING H1 — Outdated Apache 2.4.29 (9 years behind current)
+### FINDING H1  Outdated Apache 2.4.29 (9 years behind current)
 
 | Field | Detail |
 |-------|--------|
@@ -120,13 +120,13 @@ The East Campus web server runs **Apache/2.2.22 (Ubuntu)**, belonging to the Apa
 
 **Description:**
 
-The West Campus server runs **Apache/2.4.29 (Ubuntu)** with a CodeIgniter application stack. While the Apache 2.4.x branch remains actively supported, version 2.4.29 was released in 2017 — significantly behind the current 2.4.6x releases, which include numerous security fixes.
+The West Campus server runs **Apache/2.4.29 (Ubuntu)** with a CodeIgniter application stack. While the Apache 2.4.x branch remains actively supported, version 2.4.29 was released in 2017  significantly behind the current 2.4.6x releases, which include numerous security fixes.
 
 **Remediation:** Update Apache to the latest version available in the Ubuntu LTS repositories.
 
 ---
 
-### FINDING H2 — Outdated nginx 1.14.2
+### FINDING H2  Outdated nginx 1.14.2
 
 | Field | Detail |
 |-------|--------|
@@ -142,7 +142,7 @@ The South Campus runs **nginx/1.14.2**, a version that no longer receives active
 
 ---
 
-### FINDING M1 — WordPress Admin Panels Publicly Accessible
+### FINDING M1  WordPress Admin Panels Publicly Accessible
 
 | Field | Detail |
 |-------|--------|
@@ -161,7 +161,7 @@ Multiple campus websites expose `/wp-admin/` login panels directly to the intern
 
 ---
 
-### FINDING M2 — DMARC Policy Set to Monitor-Only (Phishing Risk)
+### FINDING M2  DMARC Policy Set to Monitor-Only (Phishing Risk)
 
 | Field | Detail |
 |-------|--------|
@@ -172,7 +172,7 @@ Multiple campus websites expose `/wp-admin/` login panels directly to the intern
 
 Email authentication records:
 - **SPF:**  Configured (`v=spf1 mx include:spf.protection.outlook.com ~all`)
-- **DMARC:**  `p=none` — monitor-only mode, does not prevent domain spoofing
+- **DMARC:**  `p=none`  monitor-only mode, does not prevent domain spoofing
 - **DKIM:**  No default selector found
 
 With `p=none`, anyone can send emails appearing to come from `@national-university.example` without them being rejected or quarantined.
@@ -184,7 +184,7 @@ With `p=none`, anyone can send emails appearing to come from `@national-universi
 
 ---
 
-### FINDING M3 — SSL Certificates Approaching Expiration
+### FINDING M3  SSL Certificates Approaching Expiration
 
 | Campus | Expiration | Days Remaining |
 |--------|------------|:--------------:|
@@ -197,14 +197,14 @@ With `p=none`, anyone can send emails appearing to come from `@national-universi
 
 ---
 
-### FINDING M4 — Central Server Behind Cloud WAF
+### FINDING M4  Central Server Behind Cloud WAF
 
 | Field | Detail |
 |-------|--------|
 | **Severity** | INFO |
 | **Location** | `www.national-university.example` (central) |
 
-**Observation:** The central domain sits behind a cloud Web Application Firewall (Azure App Gateway equivalent), which mitigates direct exposure of the nginx backend. This is a **positive finding** — recommended as a pattern for other campuses.
+**Observation:** The central domain sits behind a cloud Web Application Firewall (Azure App Gateway equivalent), which mitigates direct exposure of the nginx backend. This is a **positive finding**  recommended as a pattern for other campuses.
 
 ---
 
@@ -214,7 +214,7 @@ These campuses demonstrate good security practices worth replicating across the 
 
 | Campus | Practice |
 |--------|----------|
-| Central-West Campus | Drupal 10 — modern CMS with active security support |
+| Central-West Campus | Drupal 10  modern CMS with active security support |
 | South-East Campus | HSTS preloaded, restrictive Content-Security-Policy |
 | Central | SPF + DMARC configured (needs DKIM + policy tightening) |
 
@@ -224,10 +224,10 @@ These campuses demonstrate good security practices worth replicating across the 
 
 | Phase | Activity | Tools & Techniques |
 |-------|----------|-------------------|
-| **F0 — OSINT** | Domain intelligence, subdomain discovery | dig, crt.sh |
-| **F1 — Fingerprinting** | Server version detection, SSL analysis | curl (HTTP headers), openssl s_client |
-| **F2 — CVE Correlation** | Version-to-CVE matching | NIST NVD, MITRE CVE database |
-| **F3 — DNS Security** | Email authentication audit | dig (SPF/DMARC/DKIM) |
+| **F0  OSINT** | Domain intelligence, subdomain discovery | dig, crt.sh |
+| **F1  Fingerprinting** | Server version detection, SSL analysis | curl (HTTP headers), openssl s_client |
+| **F2  CVE Correlation** | Version-to-CVE matching | NIST NVD, MITRE CVE database |
+| **F3  DNS Security** | Email authentication audit | dig (SPF/DMARC/DKIM) |
 
 **Methodology Compliance:** OWASP Testing Guide v4, NIST SP 800-115. **No active scanning, no exploits, no automated crawling.**
 
@@ -239,7 +239,7 @@ These campuses demonstrate good security practices worth replicating across the 
 
 | CVE | Component | CVSS | Status |
 |-----|-----------|------|--------|
-| CVE-2017-7269 | IIS 6.0 WebDAV RCE | 9.8 | Confirmed version match — public exploit exists |
+| CVE-2017-7269 | IIS 6.0 WebDAV RCE | 9.8 | Confirmed version match  public exploit exists |
 | CVE-2017-9798 | Apache 2.2.x Optionsbleed | 7.5 | Confirmed version match |
 | CVE-2017-7679 | Apache 2.2.x Buffer Overread (mod_mime) | 7.5 | Confirmed version match |
 
@@ -274,20 +274,20 @@ This assessment followed **Coordinated Vulnerability Disclosure (CVD)** best pra
 
 ## 9. Prioritized Remediation Roadmap
 
-### IMMEDIATE (0–7 days)
+### IMMEDIATE (07 days)
 1.  **North Campus:** Renew expiring SSL certificate (5 days)
 2.  **North Campus:** Begin migration off IIS 6.0 / Windows Server 2003 R2
 
-### SHORT-TERM (1–4 weeks)
-3. 🟠 **East Campus:** Verify Apache 2.2.22 patch level; upgrade to 2.4.x
-4. 🟡 **West Campus:** Update Apache 2.4.29 to latest
-5. 🟡 **South Campus:** Update nginx 1.14.2 to latest stable
-6. 🔒 **All campuses:** Restrict `/wp-admin/` access by IP
+### SHORT-TERM (14 weeks)
+3.  **East Campus:** Verify Apache 2.2.22 patch level; upgrade to 2.4.x
+4.  **West Campus:** Update Apache 2.4.29 to latest
+5.  **South Campus:** Update nginx 1.14.2 to latest stable
+6.  **All campuses:** Restrict `/wp-admin/` access by IP
 
-### MEDIUM-TERM (1–3 months)
-7. 📧 Tighten DMARC policy: `p=none` -> `p=quarantine` -> `p=reject`
+### MEDIUM-TERM (13 months)
+7.  Tighten DMARC policy: `p=none` -> `p=quarantine` -> `p=reject`
 8.  Implement DKIM signing
-9. 🔒 Automate SSL certificate renewal (certbot / ACME)
+9.  Automate SSL certificate renewal (certbot / ACME)
 
 ### ONGOING
 10. Establish a centralized patch management policy across all campuses

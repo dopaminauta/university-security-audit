@@ -1,4 +1,4 @@
-# 🔐 External Security Assessment — National University Network (Case Study)
+#  External Security Assessment  National University Network (Case Study)
 
 [![Assessment Type](https://img.shields.io/badge/assessment-passive%20OSINT-blue)](https://github.com/dopaminauta/university-security-audit)
 [![Methodology](https://img.shields.io/badge/disclosure-coordinated%20CVD-green)](https://github.com/dopaminauta/university-security-audit)
@@ -6,7 +6,7 @@
 [![Review](https://img.shields.io/badge/review-ethical%20QA%20gate-purple)](https://github.com/dopaminauta/university-security-audit)
 [![Status](https://img.shields.io/badge/status-case%20study-orange)](https://github.com/dopaminauta/university-security-audit)
 
-**Security assessment case study** — demonstrating multi-campus infrastructure audit, legacy system vulnerability research, and responsible disclosure practices.
+**Security assessment case study**  demonstrating multi-campus infrastructure audit, legacy system vulnerability research, and responsible disclosure practices.
 
 >  **Important:** This repository contains a **fictionalized case study** based on an unsolicited good-faith external security assessment, prepared for professional portfolio purposes. All technical information, domain names, IP addresses, institutional names, campus locations, and server hostnames have been **replaced with synthetic or simulated data** to protect the confidentiality of the assessed organization, in accordance with Coordinated Vulnerability Disclosure (CVD) principles.
 
@@ -16,7 +16,7 @@
 
 This case study demonstrates a multi-campus external security assessment: discovering and fingerprinting web servers across a distributed university network, identifying end-of-life systems with publicly available exploits, analyzing email security posture, and delivering a prioritized remediation roadmap.
 
-**All work was performed passively — no exploits were executed, no systems were accessed, no data was modified or extracted.**
+**All work was performed passively  no exploits were executed, no systems were accessed, no data was modified or extracted.**
 
 ---
 
@@ -24,16 +24,16 @@ This case study demonstrates a multi-campus external security assessment: discov
 
 | Severity | Count | Category |
 |----------|:-----:|----------|
-|  CRITICAL (CVSS 9.8) | 1 | IIS 6.0 on Windows Server 2003 R2 — EOL 2015, public RCE exploit (CVE-2017-7269) |
-| 🟠 HIGH (CVSS 7.5) | 1 | Apache 2.2.22 — branch EOL 2018, memory disclosure via mod_mime (CVE-2017-9798, CVE-2017-7679) |
-| 🟡 MEDIUM (CVSS 5.0) | 2 | Apache 2.4.29 and nginx 1.14.2 — significantly outdated within supported branches |
+|  CRITICAL (CVSS 9.8) | 1 | IIS 6.0 on Windows Server 2003 R2  EOL 2015, public RCE exploit (CVE-2017-7269) |
+|  HIGH (CVSS 7.5) | 1 | Apache 2.2.22  branch EOL 2018, memory disclosure via mod_mime (CVE-2017-9798, CVE-2017-7679) |
+|  MEDIUM (CVSS 5.0) | 2 | Apache 2.4.29 and nginx 1.14.2  significantly outdated within supported branches |
 |  LOW / INFO | 4 | WordPress admin exposure, DMARC monitor-only, expiring SSL certificates, WAF detection |
 
-**Most Significant:** A campus web server running **IIS 6.0 on Windows Server 2003 R2** — an operating system without security patches since 2015 — with a publicly available unauthenticated RCE exploit (CVE-2017-7269, CVSS 9.8). SSL certificate expiring within 5 days.
+**Most Significant:** A campus web server running **IIS 6.0 on Windows Server 2003 R2**  an operating system without security patches since 2015  with a publicly available unauthenticated RCE exploit (CVE-2017-7269, CVSS 9.8). SSL certificate expiring within 5 days.
 
 ---
 
-## 🛠️ Skills Demonstrated
+##  Skills Demonstrated
 
 | Domain | Techniques |
 |--------|------------|
@@ -51,14 +51,14 @@ This case study demonstrates a multi-campus external security assessment: discov
 
 ```
 university-security-audit/
-├── README.md                      <- Portfolio overview & methodology
-├── SECURITY_AUDIT_REPORT.md       <- Full case study report (fictionalized)
-└── LICENSE                        <- MIT License
+ README.md                      <- Portfolio overview & methodology
+ SECURITY_AUDIT_REPORT.md       <- Full case study report (fictionalized)
+ LICENSE                        <- MIT License
 ```
 
 ---
 
-## 🧰 Methodology & Tools
+##  Methodology & Tools
 
 | Phase | Tools Used |
 |-------|------------|
@@ -97,7 +97,7 @@ university-security-audit/
 
 ---
 
-## 📄 Full Case Study
+##  Full Case Study
 
 -> **[SECURITY_AUDIT_REPORT.md](./SECURITY_AUDIT_REPORT.md)**
 
