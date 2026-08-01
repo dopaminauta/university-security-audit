@@ -49,3 +49,7 @@ OWASP Testing Guide v4 - NIST SP 800-115
 
 ---
 *Anonymized portfolio case study. Passive only; no exploitation, no system access, no real identifiers. Responsibly disclosed before publication.*
+
+---
+
+> *Solve et Coagula — bound by EMET, driven by AHAVA.*
