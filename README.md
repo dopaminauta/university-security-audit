@@ -31,8 +31,21 @@ LICENSE                   - MIT
 | H2 | Outdated nginx 1.14.2 | Medium (5.0) |
 | M1-M4 | wp-admin exposure, DMARC p=none, expiring certs, WAF (positive) | Low / Info |
 
+## Skills demonstrated
+| Domain | Techniques |
+|--------|------------|
+| OSINT | Certificate transparency (crt.sh), DNS reconnaissance, subdomain discovery |
+| Web security | HTTP banner fingerprinting, TLS handshake analysis, CVSS 3.1 scoring |
+| Vulnerability research | CVE-to-version matching, EOL-software risk assessment, public-exploit correlation |
+| Email security | SPF/DMARC/DKIM audit, domain-spoofing risk analysis |
+| Legacy assessment | Windows Server 2003 R2 / IIS 6.0 / Apache 2.2.x risk evaluation |
+| Technical writing | CVSS-justified findings, backport-aware caveats, prioritized remediation |
+
 ## Standards referenced
 OWASP Testing Guide v4 - NIST SP 800-115
+
+## Author
+**Axel Feduzka** · GitHub [@dopaminauta](https://github.com/dopaminauta) · dominguezfya@gmail.com
 
 ---
 *Anonymized portfolio case study. Passive only; no exploitation, no system access, no real identifiers. Responsibly disclosed before publication.*

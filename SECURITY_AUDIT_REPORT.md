@@ -3,7 +3,7 @@
 
 **Report ID:** EXT-AUDIT-CS-002
 **Type:** External passive assessment (OSINT + non-intrusive banner/DNS inspection)
-**Author:** Independent Security Researcher (portfolio)
+**Author:** Axel Feduzka (github.com/dopaminauta)
 **Classification:** Public - Anonymized Case Study
 
 > **About this document:** This is an anonymized write-up of a real, good-faith external assessment performed using **only passive techniques** - public DNS queries, certificate-transparency lookups, and inspection of HTTP response banners. **No active scanning, no exploitation, no authentication attempts, and no access to any system occurred.** Institution names, campus locations, hostnames, IP addresses, and other identifiers have been replaced with generic placeholders so the assessed organization cannot be identified. Findings were disclosed responsibly before publication (see Disclosure).
