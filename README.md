@@ -1,110 +1,38 @@
-#  External Security Assessment  National University Network (Case Study)
+# External Security Assessment - Case Study (Passive OSINT, Anonymized)
 
-[![Assessment Type](https://img.shields.io/badge/assessment-passive%20OSINT-blue)](https://github.com/dopaminauta/university-security-audit)
-[![Methodology](https://img.shields.io/badge/disclosure-coordinated%20CVD-green)](https://github.com/dopaminauta/university-security-audit)
-[![Exploitation](https://img.shields.io/badge/exploitation-none-brightgreen)](https://github.com/dopaminauta/university-security-audit)
-[![Review](https://img.shields.io/badge/review-ethical%20QA%20gate-purple)](https://github.com/dopaminauta/university-security-audit)
-[![Status](https://img.shields.io/badge/status-case%20study-orange)](https://github.com/dopaminauta/university-security-audit)
+![type](https://img.shields.io/badge/type-case%20study-blue)
+![method](https://img.shields.io/badge/method-passive%20OSINT-green)
+![exploitation](https://img.shields.io/badge/exploitation-none-brightgreen)
+![disclosure](https://img.shields.io/badge/disclosure-responsible-purple)
 
-**Security assessment case study**  demonstrating multi-campus infrastructure audit, legacy system vulnerability research, and responsible disclosure practices.
+An **anonymized write-up of a real, good-faith external assessment** of a distributed multi-campus university's public web presence, performed using **only passive techniques**: public DNS, certificate transparency, and HTTP banner inspection.
 
->  **Important:** This repository contains a **fictionalized case study** based on an unsolicited good-faith external security assessment, prepared for professional portfolio purposes. All technical information, domain names, IP addresses, institutional names, campus locations, and server hostnames have been **replaced with synthetic or simulated data** to protect the confidentiality of the assessed organization, in accordance with Coordinated Vulnerability Disclosure (CVD) principles.
+> **No active scanning, no exploitation, no authentication, no system access.** Institution names, campuses, hostnames, and IPs are replaced with generic placeholders so the organization cannot be identified. Findings were **responsibly disclosed** (via the national CERT and, where possible, the operator) before this anonymized version was published.
 
----
+## What it demonstrates
+- A disciplined **passive** external methodology (DNS -> banners -> CVE correlation -> scoring).
+- **Honest caveats:** banner-inferred versions are potential (backporting), not confirmed; CVE matches are hypotheses, not proof.
+- Responsible disclosure through the correct channel (national CERT / operator), identifying oneself, sharing only public data.
+- Clear, CVSS-justified findings and a prioritized remediation roadmap.
 
-##  Overview
-
-This case study demonstrates a multi-campus external security assessment: discovering and fingerprinting web servers across a distributed university network, identifying end-of-life systems with publicly available exploits, analyzing email security posture, and delivering a prioritized remediation roadmap.
-
-**All work was performed passively  no exploits were executed, no systems were accessed, no data was modified or extracted.**
-
----
-
-##  Key Findings
-
-| Severity | Count | Category |
-|----------|:-----:|----------|
-|  CRITICAL (CVSS 9.8) | 1 | IIS 6.0 on Windows Server 2003 R2  EOL 2015, public RCE exploit (CVE-2017-7269) |
-|  HIGH (CVSS 7.5) | 1 | Apache 2.2.22  branch EOL 2018, memory disclosure via mod_mime (CVE-2017-9798, CVE-2017-7679) |
-|  MEDIUM (CVSS 5.0) | 2 | Apache 2.4.29 and nginx 1.14.2  significantly outdated within supported branches |
-|  LOW / INFO | 4 | WordPress admin exposure, DMARC monitor-only, expiring SSL certificates, WAF detection |
-
-**Most Significant:** A campus web server running **IIS 6.0 on Windows Server 2003 R2**  an operating system without security patches since 2015  with a publicly available unauthenticated RCE exploit (CVE-2017-7269, CVSS 9.8). SSL certificate expiring within 5 days.
-
----
-
-##  Skills Demonstrated
-
-| Domain | Techniques |
-|--------|------------|
-| **OSINT** | Certificate transparency enumeration (crt.sh), DNS reconnaissance, subdomain discovery |
-| **Web Security** | HTTP banner fingerprinting, TLS handshake analysis, CVSS 3.1 scoring |
-| **Vulnerability Research** | CVE-to-version matching, EOL software risk assessment, public exploit correlation |
-| **Email Security** | SPF/DMARC/DKIM audit, domain spoofing risk analysis |
-| **Legacy System Assessment** | Windows Server 2003 R2, IIS 6.0, Apache 2.2.x risk evaluation |
-| **Multi-Campus Audit** | Distributed infrastructure assessment, comparative security posture analysis |
-| **Technical Writing** | CVSS-justified findings, backport-aware caveats, prioritized multi-campus remediation |
-
----
-
-##  Repository Structure
-
+## Contents
 ```
-university-security-audit/
- README.md                      <- Portfolio overview & methodology
- SECURITY_AUDIT_REPORT.md       <- Full case study report (fictionalized)
- LICENSE                        <- MIT License
+README.md                 - this overview
+SECURITY_AUDIT_REPORT.md  - the full anonymized report
+LICENSE                   - MIT
 ```
 
----
+## Findings (anonymized)
+| # | Finding | Severity |
+|---|---------|:--------:|
+| C1 | EOL IIS 6.0 / Win Server 2003 R2 (public RCE CVE match) | Critical (9.8) |
+| C2 | EOL Apache 2.2.22 (Optionsbleed match) | High (7.5) |
+| H1 | Outdated Apache 2.4.29 | Medium (5.0) |
+| H2 | Outdated nginx 1.14.2 | Medium (5.0) |
+| M1-M4 | wp-admin exposure, DMARC p=none, expiring certs, WAF (positive) | Low / Info |
 
-##  Methodology & Tools
-
-| Phase | Tools Used |
-|-------|------------|
-| **OSINT** | dig, crt.sh |
-| **Fingerprinting** | curl (HTTP headers), openssl s_client (TLS) |
-| **Email Security** | dig (SPF/DMARC/DKIM) |
-| **CVE Analysis** | NIST NVD, MITRE CVE database |
-| **Quality Review** | Independent multi-stage validation |
-
-**Standards:** OWASP Testing Guide v4 · NIST SP 800-115
-
-** Ubuntu/Debian Backport Caveat:** Servers on Debian-based distributions may backport security patches without updating the banner version string. Reported versions reflect HTTP banners; actual patch levels require authorized active verification.
+## Standards referenced
+OWASP Testing Guide v4 - NIST SP 800-115
 
 ---
-
-##  Ethics & Coordinated Disclosure
-
-1. **100% Passive:** No active exploitation, no intrusion, no denial of service
-2. **OSINT-Only:** All intelligence from public sources and non-intrusive banner inspection
-3. **Confidential First:** A complete confidential report was prepared for the system owner
-4. **Structural Sanitization:** All identifying information replaced with synthetic data for this public version
-5. **No Exploit Code:** This repository contains no working exploits or bypass techniques
-
----
-
-##  Assessment Metrics (Fictionalized)
-
-| Metric | Value |
-|--------|:-----:|
-| Campuses Assessed | 7 (6 regional + central) |
-| Technologies Fingerprinted | IIS, Apache, nginx, Drupal, WordPress, CodeIgniter |
-| End-of-Life Systems Found | 2 (IIS 6.0, Apache 2.2.22) |
-| CVEs Evaluated | 3 confirmed matches |
-| SSL Certificates Audited | 5 |
-| Findings Documented | 8 |
-
----
-
-##  Full Case Study
-
--> **[SECURITY_AUDIT_REPORT.md](./SECURITY_AUDIT_REPORT.md)**
-
-
----
-
-Axel Feduzka — Offensive Security<br>
-Honesty in every finding.<br>
-Curiosity in every dig.<br>
-Dedication in every delivery.
+*Anonymized portfolio case study. Passive only; no exploitation, no system access, no real identifiers. Responsibly disclosed before publication.*
